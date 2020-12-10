@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+#   namespace: spark
+  name: my-notebook-deployment
+#   labels:
+#     app: my-notebook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: my-notebook
+  template:
+    metadata:
+      labels:
+        component: my-notebook
+    spec:
+      serviceAccountName: spark
+      containers:
+      - name: my-notebook
+        image: jupyter/pyspark-notebook:latest
+        ports:
+          - containerPort: 8888
+        volumeMounts:
+          - mountPath: "/work"
+            name: master-work
+        # resources:
+        #   limits:
+        #     memory: 2Gi
+      volumes:
+      - name: master-work
+        hostPath:
+          path: /home/cc/work
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-notebook-deployment
+spec:
+  type: NodePort
+  selector:
+    component: my-notebook
+  ports:
+    - protocol: TCP
+      port: 29413
+      targetPort: 29413
+      nodePort: 30015
