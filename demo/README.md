@@ -25,5 +25,7 @@ the notebook `demo-notebook.ipynb` contains codes for the final data preprocessi
 
 We used Bokeh to build a reactive plot showcasing the trends of flight traffic and the growth of COVID cases. Note that a static plot can be shown by calling the `show()` function, but the plot will not be displayed in the notebook. Instead, a window will pop up with the static plot. To have a fully functioned plot with the reactive components, we will have to run `python -m bokeh serve --show demo-notebook.ipynb` in the terminal with all the dependencies installed. Then a localhost window will be opened in our browser with all the reactive functions like slider, selectors, and hovertools.
 
-![image-20201211054059765](src="https://github.com/carolcheng98/spark-bokeh-covid-airport-analysis/blob/main/demo/spark-bokeh-covid-airport-analysis/demo/bokeh-plot-demo.png")
+
+
+<img src="https://github.com/carolcheng98/spark-bokeh-covid-airport-analysis/blob/main/demo/bokeh-plot-demo.png" alt="image-20201211054611519" style="zoom:60%;" />
 
