@@ -29,7 +29,7 @@ spark = SparkSession \
 
 #Task1: read in csv data without a customized schema
 #source file: us_confirmed_pcs.csv
-def loadDataTask(infile,outfile)
+def loadDataTask(infile,outfile):
     start_time=time.time()
     df = spark.read.option("header",True).option("inferSchema",True)\
         .csv(infile)
